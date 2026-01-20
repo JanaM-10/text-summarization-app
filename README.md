@@ -30,7 +30,6 @@ text-summarization-app/
 
 1. **Clone the repository:**
 
-
   git clone https://github.com/JanaM-10/text-summarization-app.git
   cd testsummarization
 
