@@ -31,11 +31,11 @@ text-summarization-app/
 1. **Clone the repository:**
 
 
-git clone https://github.com/JanaM-10/text-summarization-app.git
-cd testsummarization
+  git clone https://github.com/JanaM-10/text-summarization-app.git
+  cd testsummarization
 
 2. **Install dependencies:**
-pip install -r requirements.txt
+  pip install -r requirements.txt
 
 Dependencies include:
 - flask
