@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer - AI-Powered Summarization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="title">✨ Text Summarizer ✨</h1>
+            <p class="subtitle">Transform lengthy text into concise summaries using AI</p>
+        </header>
+
+        <main>
+            <section class="summarizer-section">
+                <div class="input-container">
+                    <label for="text-input" class="input-label">Enter your text to summarize:</label>
+                    <textarea 
+                        id="text-input" 
+                        class="text-input" 
+                        placeholder="Paste or type your text here... (e.g., articles, documents, notes)"
+                        rows="10"
+                    ></textarea>
+                    <div class="button-container">
+                        <button id="summarize-btn" class="summarize-btn">
+                            <span class="btn-text">Summarize Text</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="summary-container" class="summary-container" style="display: none;">
+                    <h2 class="summary-title">Summary:</h2>
+                    <div id="summary-output" class="summary-output"></div>
+                    <button id="copy-btn" class="copy-btn">Copy Summary</button>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2 class="section-title">About This Website</h2>
+                <div class="about-content">
+                    <p>
+                        Welcome to our AI-powered text summarization platform! This website utilizes advanced 
+                        natural language processing technology to help you quickly extract key information from 
+                        lengthy texts.
+                    </p>
+                    <p>
+                        Our system is built using a pre-trained large language model from Hugging Face, specifically 
+                        the <strong>facebook/bart-large-cnn</strong> model. This state-of-the-art model specializes 
+                        in abstractive text summarization, meaning it doesn't just extract sentences—it understands 
+                        context and generates concise, coherent summaries that capture the essence of your content.
+                    </p>
+                    <p>
+                        Whether you're dealing with news articles, research papers, meeting notes, or any other 
+                        lengthy text, simply paste it into the text box above and let our AI create a clear, 
+                        concise summary for you. Perfect for students, researchers, professionals, and anyone 
+                        who needs to quickly understand the main points of a document.
+                    </p>
+                    <div class="features">
+                        <h3>Key Features:</h3>
+                        <ul>
+                            <li>✨ Fast and accurate summarization</li>
+                            <li>✨ Powered by advanced BART language model</li>
+                            <li>✨ Easy-to-use interface</li>
+                            <li>✨ No registration required</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Text Summarizer. Powered by AI.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
