@@ -23,7 +23,7 @@ A full-stack web application that summarizes long-form text using a **hybrid ext
 
 ## Example
 
-*(Add a before/after screenshot here: input textarea + generated summary output.)*
+![Application Screenshot](results/screenshot.png)
 
 ## Requirements
 
@@ -69,13 +69,8 @@ Response:
 - Support file upload (.txt/.pdf) instead of paste-only input
 - Cache repeated requests to reduce inference time
 - Add unit tests for the preprocessing and chunking functions
-
 ---
-## Example
 
-![Application Screenshot](results/screenshot.png)
-
----
 *Built as part of ongoing self-study in NLP and applied transformer models.*
 
 
