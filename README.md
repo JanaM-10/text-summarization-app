@@ -1,6 +1,6 @@
 # Text Summarizer (Flask + BART)
 
-![Python](https://img.shields.io/badge/Python-3.x-blue) ![Flask](https://img.shields.io/badge/Flask-backend-black) ![HuggingFace](https://img.shields.io/badge/🤗-BART--large--CNN-yellow)
+![Python](https://img.shields.io/badge/Python-3.x-blue) ![Flask](https://img.shields.io/badge/Flask-3.1-black) ![Transformers](https://img.shields.io/badge/🤗_Transformers-5.13-yellow) ![scikit--learn](https://img.shields.io/badge/scikit--learn-1.6-orange)
 
 A full-stack web application that summarizes long-form text using a **hybrid extractive + abstractive pipeline**. Extractive scoring (TF-IDF with n-grams) identifies the most information-dense sentences, while abstractive summarization (Facebook's `bart-large-cnn` model from Hugging Face) generates a fluent, human-readable summary from chunked input.
 
@@ -27,10 +27,12 @@ A full-stack web application that summarizes long-form text using a **hybrid ext
 
 ## Requirements
 
-- Python 3.9+
-- Flask, Flask-CORS
-- transformers, torch
-- scikit-learn, numpy
+- Flask==3.1.3
+- flask-cors==6.0.5
+- numpy==2.0.2
+- scikit-learn==1.6.1
+- transformers==5.13.1
+- torch==2.11.0+cpu
 
 ## How to Run
 
@@ -69,17 +71,6 @@ Response:
 - Support file upload (.txt/.pdf) instead of paste-only input
 - Cache repeated requests to reduce inference time
 - Add unit tests for the preprocessing and chunking functions
+
 ---
-
 *Built as part of ongoing self-study in NLP and applied transformer models.*
-
-
-
-
-
-
-
-
-
-
-
