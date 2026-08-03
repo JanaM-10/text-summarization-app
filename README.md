@@ -71,6 +71,11 @@ Response:
 - Add unit tests for the preprocessing and chunking functions
 
 ---
+## Example
+
+![Application Screenshot](results/screenshot.png)
+
+---
 *Built as part of ongoing self-study in NLP and applied transformer models.*
 
 
