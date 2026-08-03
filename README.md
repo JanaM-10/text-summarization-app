@@ -1,98 +1,77 @@
-# Text Summarization Web App
+# Text Summarizer (Flask + BART)
 
-## Overview
+![Python](https://img.shields.io/badge/Python-3.x-blue) ![Flask](https://img.shields.io/badge/Flask-backend-black) ![HuggingFace](https://img.shields.io/badge/🤗-BART--large--CNN-yellow)
 
-This project is a **web application for text summarization** using a hybrid approach:  
-- **Extractive summarization** (TF-IDF with N-grams)  
-- **Abstractive summarization** (BART model from HuggingFace)  
-
-The backend is built with **Flask** and serves an API endpoint for the frontend to request summaries.  
-The frontend consists of a simple interface (`index.html`) where users can input text and receive summarized results.
-
----
-
-## Repository Structure
-
-text-summarization-app/
-│
-├─ README.md # Project documentation
-├─ frontend/
-    ├─ index.html           # Frontend HTML
-    ├─ script.js            # Frontend JavaScript
-    └─ style.css            # Frontend CSS
-├─ requirements.txt # Python dependencies
-└─ app.py # Flask backend
-
-
----
-
-## Installation
-
-1. **Clone the repository:**
-
-  git clone https://github.com/JanaM-10/text-summarization-app.git
-  cd testsummarization
-
-2. **Install dependencies:**
-  pip install -r requirements.txt
-
-Dependencies include:
-- flask
-- flask-cors
-- transformers
-- torch
-- numpy
-- scikit-learn
-
----
-
-## Usage
-
-1. **Run the Flask backend:**
-   
- python app.py
-This will start the server at http://127.0.0.1:5000/.
-
-
-2. **Open the frontend:**
-   
-- Open index.html in your browser.
-- Enter or paste the text you want to summarize.
-- Click the summarize Text button to get the result.
-
-3. **API Endpoint:**
-You can also send a POST request to the API directly:
-
-POST http://127.0.0.1:5000/api/summarize
-Content-Type: application/json
-
-{
-    "text": "Your long text goes here..."
-}
-
-
-Response:
-{
-    "summary": "The generated summarized text..."
-}
-
----
+A full-stack web application that summarizes long-form text using a **hybrid extractive + abstractive pipeline**. Extractive scoring (TF-IDF with n-grams) identifies the most information-dense sentences, while abstractive summarization (Facebook's `bart-large-cnn` model from Hugging Face) generates a fluent, human-readable summary from chunked input.
 
 ## Features
 
-- Hybrid summarization: extractive + abstractive
-- Handles long texts by chunking them
-- Returns concise and readable summaries
-- Frontend interacts via a simple API
+- Hybrid summarization: TF-IDF extractive scoring + BART abstractive generation
+- Automatic chunking for long texts that exceed the model's token limit
+- Simple REST API (`/api/summarize`) built with Flask
+- Lightweight vanilla JS/HTML/CSS frontend — no framework overhead
+- One-click copy-to-clipboard for results
+- Input validation (rejects text under 50 characters)
+
+## How It Works
+
+1. **Preprocess** — strip URLs, special characters, and normalize whitespace.
+2. **Extractive pass** — score sentences with TF-IDF (unigrams + bigrams) to surface key content.
+3. **Chunk** — split long text into model-sized chunks (~900 tokens) so nothing gets truncated.
+4. **Abstractive pass** — feed each chunk through BART (`facebook/bart-large-cnn`) with beam search and repetition blocking.
+5. **Merge** — concatenate chunk summaries into the final result and return it to the frontend.
+
+## Example
+
+*(Add a before/after screenshot here: input textarea + generated summary output.)*
+
+## Requirements
+
+- Python 3.9+
+- Flask, Flask-CORS
+- transformers, torch
+- scikit-learn, numpy
+
+## How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JanaM-10/text-summarization-app.git
+   cd text-summarization-app
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Start the Flask backend:
+   ```bash
+   python app.py
+   ```
+   Server runs at `http://127.0.0.1:5000/`.
+4. Open `frontend/index.html` in your browser and paste in text to summarize.
+
+Or call the API directly:
+```
+POST http://127.0.0.1:5000/api/summarize
+Content-Type: application/json
+
+{ "text": "Your long text goes here..." }
+```
+Response:
+```json
+{ "summary": "The generated summary..." }
+```
+
+## Future Improvements
+
+- Deploy the Flask backend (Render/Railway) so the frontend works without a local server
+- Add a text-length/summary-length ratio slider for user control
+- Support file upload (.txt/.pdf) instead of paste-only input
+- Cache repeated requests to reduce inference time
+- Add unit tests for the preprocessing and chunking functions
 
 ---
-
-## Notes
-
-- Texts shorter than 50 characters will return an error.
-- The extractive summary is used internally and the frontend returns only the abstractive result.
-
-  
+*Built as part of ongoing self-study in NLP and applied transformer models.*
 
 
 
